@@ -100,7 +100,7 @@ class Presenter:
 	def present(text):
 		print(text)
 
-
+Presenter.present(Executer.execute('help', []))
 while True:
 	a = input('> ')
 	if len(a) <= 0: a='turn'
