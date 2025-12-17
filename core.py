@@ -160,17 +160,17 @@ class Game:
 
 
 
-game = Game()
-game.add_character({'name': 'Nester', 'base_hp': 20, 'hp': 20, 'dmg': 4,'crit': 30})
-game.add_character({'name': 'Gabriel', 'base_hp': 30, 'hp': 30, 'dmg': 2,'crit': 50})
-game.add_character({'name': 'Lampman', 'base_hp': 10, 'hp': 10, 'dmg': 7,'crit': 60})
+# game = Game()
+# game.add_character({'name': 'Nester', 'base_hp': 20, 'hp': 20, 'dmg': 4,'crit': 30})
+# game.add_character({'name': 'Gabriel', 'base_hp': 30, 'hp': 30, 'dmg': 2,'crit': 50})
+# game.add_character({'name': 'Lampman', 'base_hp': 10, 'hp': 10, 'dmg': 7,'crit': 60})
 
-while True:
-	while not game.is_done():
-		print(game.turn())
-		if game.get_turn() == 4:
-			print(game.get_state())
-			game.set_state(game.get_state())
-	print(game.info())
-	input('press any key to reset')
-	game.reset_game()
+# while True:
+# 	while not game.is_done():
+# 		print(game.turn())
+# 		if game.get_turn() == 4:
+# 			print(game.get_state())
+# 			game.set_state(game.get_state())
+# 	print(game.info())
+# 	input('press any key to reset')
+# 	game.reset_game()
