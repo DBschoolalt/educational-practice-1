@@ -1,4 +1,5 @@
 import core
+import data
 
 game = core.Game()
 
@@ -26,7 +27,7 @@ class Executer:
 		match c:
 			case 'help':
 				return ''\
-				'"turn"  -  proceed to next turn in the game\n'\
+				'"turn"  -  proceed to next turn in the game (you can also just press enter)\n'\
 				'"info"  -  show current status of the game\n'\
 				'"reset"  -  restart the game\n'\
 				'\n'\
@@ -35,7 +36,7 @@ class Executer:
 				'\n'\
 				'"addchr [name] [health] [damage] [critical chance]"  -  add a character to the game\n'\
 				'"savechr"  -  save all current game characters\n'\
-				'"loadchr"  -  load last saved characters\n'\
+				'"loadchr"  -  load last saved characters (resets the game)\n'\
 				'"clearchr"  -  remove all characters from the game\n'\
 				'\n'\
 				'"help"  -  to show this message\n'\
@@ -51,16 +52,21 @@ class Executer:
 				return 'game reset'
 
 			case 'savegame':
-				pass
+				data.GameData.set(game.get_state())
+				return 'game saved'
 
 			case 'loadgame':
-				pass
+				game.set_state(data.GameData.get())
+				return 'game loaded'
 
 			case 'savechr':
-				pass
+				data.CharacterData.set(game.get_characters())
+				return 'characters saved'
 
 			case 'loadchr':
-				pass
+				game.reset_game()
+				game.set_characters(data.CharacterData.get())
+				return 'characters loaded'
 
 			case 'clearchr':
 				game.clear_characters()
@@ -97,5 +103,6 @@ class Presenter:
 
 while True:
 	a = input('> ')
+	if len(a) <= 0: a='turn'
 	command, args = Parser.parse(a.split())
 	Presenter.present(Executer.execute(command, args))

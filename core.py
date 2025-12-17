@@ -88,10 +88,26 @@ class Game:
 		return state
 
 	def set_state(self, state):
+		self.__dead.clear()
+		self.__alive.clear()
 		self.__turn = state['turn']
 		for i in state['alive']:
 			self.__alive.append(Character(i))
 		for i in state['dead']:
+			self.__dead.append(Character(i))
+
+	def get_characters(self):
+		characters = []
+		for i in self.__alive:
+			characters.append(i.get())
+		for i in self.__dead:
+			characters.append(i.get())
+		return characters
+
+	def set_characters(self, characters):
+		self.__dead.clear()
+		self.__alive.clear()
+		for i in characters:
 			self.__alive.append(Character(i))
 
 	def turn(self):
